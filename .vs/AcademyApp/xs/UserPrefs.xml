@@ -1,0 +1,43 @@
+﻿<Properties StartupConfiguration="{2A845C2C-AB41-4BB4-B06C-33016FE8F0FD}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Presentation PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Presentation/Program.cs">
+    <Files>
+      <File FileName="Presentation/Program.cs" Line="9" Column="32" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AcademyApp" expanded="True">
+            <Node name="Core" expanded="True">
+              <Node name="Constants" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+            </Node>
+            <Node name="Data" expanded="True">
+              <Node name="Contexts" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="Abstract" expanded="True" />
+                <Node name="Concrete" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Presentation" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
