@@ -22,7 +22,6 @@ namespace Presentation
 
             while (true)
             {
-                ConsoleHelper.WriteWithColor("--- Welcome! ---", ConsoleColor.DarkCyan);
                 ConsoleHelper.WriteWithColor("(1) - Create Group", ConsoleColor.DarkYellow);
                 ConsoleHelper.WriteWithColor("(2) - Update Group", ConsoleColor.DarkYellow);
                 ConsoleHelper.WriteWithColor("(3) - Delete Group", ConsoleColor.DarkYellow);
