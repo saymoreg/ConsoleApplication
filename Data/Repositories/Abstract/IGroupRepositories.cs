@@ -3,14 +3,9 @@ using Core.Entities;
 
 namespace Data.Repositories.Abstract
 {
-	public interface IGroupRepositories
+	public interface IGroupRepositories:IRepository<Group>
 	{
-		List<Group> GetAll();
-		Group Get(int id);
-		Group GetByName(string name);
-		void Add(Group group);
-		void Update(Group group);
-		void Delete(Group group);
-	}
+        Group GetByName(string name);
+    }
 }
 

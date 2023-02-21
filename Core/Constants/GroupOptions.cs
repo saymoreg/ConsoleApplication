@@ -3,7 +3,7 @@ namespace Core.Constants
 {
 	public enum GroupOptions
 	{
-		Exit,
+		BackToMainMenu,
 		CreateGroup,
 		UpdateGroup,
 		DeleteGroup,

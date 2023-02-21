@@ -10,9 +10,11 @@ namespace Presentation.Services
     public class GroupService
     {
         private readonly GroupRepository _groupRepository;
+        private readonly StudentRepository _studentRepository;
         public GroupService()
         {
             _groupRepository = new GroupRepository();
+            _studentRepository = new StudentRepository();
         }
 
         public void GetAll()
@@ -107,8 +109,16 @@ namespace Presentation.Services
         }
         public void Create()
         {
-            ConsoleHelper.WriteWithColor(" --- Enter Group Name ---", ConsoleColor.DarkCyan);
+            NameDescription: ConsoleHelper.WriteWithColor(" --- Enter Group Name ---", ConsoleColor.DarkCyan);
             string name = Console.ReadLine();
+
+            var group = _groupRepository.GetByName(name);
+
+            if (group is not null)
+            {
+                ConsoleHelper.WriteWithColor("This Group Is Already Added",ConsoleColor.Red);
+                goto NameDescription;
+            }
 
             int maxSize;
 
@@ -158,7 +168,7 @@ namespace Presentation.Services
                 ConsoleHelper.WriteWithColor("--- End date have to be bigger than boundary date ---", ConsoleColor.Red);
             }
 
-            var group = new Group
+            group = new Group
             {
                 Name = name,
                 MaxSize = maxSize,
@@ -386,29 +396,13 @@ namespace Presentation.Services
             }
             else
             {
+                foreach (var student in dbgroup.Students)
+                {
+                    student.Group = null;
+                    _studentRepository.Update(student);
+                }
                 _groupRepository.Delete(dbgroup);
                 ConsoleHelper.WriteWithColor("Group Succesfully Deleted!", ConsoleColor.Green);
-            }
-        }
-        public void Exit()
-        {
-        AreYouSureDescription: ConsoleHelper.WriteWithColor("Are you sure? --- (y) or (n) ---", ConsoleColor.Red);
-            char decision;
-            bool isSucceeded = char.TryParse(Console.ReadLine(), out decision);
-            if (!isSucceeded)   // logic to clarify if this is correct FORMAT or not
-            {
-                ConsoleHelper.WriteWithColor("Invalid format :/", ConsoleColor.Red);
-            }
-
-            if (!(decision == 'y' || decision == 'n'))  // logic to clarify if this is correct INPUT or wrong
-            {
-                ConsoleHelper.WriteWithColor("Invalid choise");
-                goto AreYouSureDescription;
-            }
-
-            if (decision == 'y')
-            {
-                return;
             }
         }
     }
