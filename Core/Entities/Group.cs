@@ -12,6 +12,8 @@ namespace Core.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public List<Student> Students { get; set; }
+        public Teacher Teacher { get; set; }
+        public int TeacherId { get; set; }
     }
 }
 

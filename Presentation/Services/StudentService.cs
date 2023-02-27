@@ -137,6 +137,69 @@ namespace Presentation.Services
             _studentRepository.Add(student); // adding student information to data
             ConsoleHelper.WriteWithColor($"{student.Name} {student.Surname} is succesfuly created :# ", ConsoleColor.Green);
         }
+        public void Update()
+        {
+            StudentDescription: GetAll();
+
+            ConsoleHelper.WriteWithColor("Enter Student ID: ",ConsoleColor.DarkCyan);
+            int id;
+            bool isSucceeded = int.TryParse(Console.ReadLine(),out id);
+            if (!isSucceeded)
+            {
+                ConsoleHelper.WriteWithColor("Invalid ID Format :(",ConsoleColor.Red);
+                goto StudentDescription;
+            }
+
+            var student = _studentRepository.Get(id);
+            if (student is null)
+            {
+                ConsoleHelper.WriteWithColor("We Could Not Find Any Student By This ID....",ConsoleColor.Red);
+                goto StudentDescription;
+            }
+
+            ConsoleHelper.WriteWithColor("Enter New Name: ",ConsoleColor.DarkCyan);
+            string name = Console.ReadLine();
+            ConsoleHelper.WriteWithColor("Enter New Surname: ",ConsoleColor.DarkCyan);
+            string surname = Console.ReadLine();
+
+        UpdateBirthDateDescription: ConsoleHelper.WriteWithColor("--- Enter New Date ---", ConsoleColor.DarkCyan);
+            DateTime birthDate;
+            isSucceeded = DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate);
+
+            if (!isSucceeded)
+            {
+                ConsoleHelper.WriteWithColor("--- Invalid Birth Date Format ---", ConsoleColor.Red);
+                goto UpdateBirthDateDescription;
+            }
+
+            AllGroupDescription: _groupRepository.GetAll();
+
+            ConsoleHelper.WriteWithColor("--- Enter New Group ID ---",ConsoleColor.DarkCyan);
+            int groupId;
+            isSucceeded = int.TryParse(Console.ReadLine(), out groupId);
+            if (!isSucceeded)
+            {
+                ConsoleHelper.WriteWithColor("Invalid ID Format...",ConsoleColor.Red);
+                goto AllGroupDescription;
+            }
+
+            var group = _groupRepository.Get(groupId);
+            if (group is null)
+            {
+                ConsoleHelper.WriteWithColor("We Cant Find Any Group By This ID....",ConsoleColor.Red);
+                goto AllGroupDescription;
+            }
+
+            student.Name = name;
+            student.Surname = surname;
+            student.BirthDate = birthDate;
+            student.Group = group;
+            student.GroupId = groupId;  // this line wont be shown in the program at all, just formal writing
+
+            _studentRepository.Update(student);
+
+            ConsoleHelper.WriteWithColor($"{student.Name} {student.Surname}, is updated",ConsoleColor.Green);
+        }
         public void Delete()
         {
             GetAll();

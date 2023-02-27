@@ -9,7 +9,8 @@ namespace Core.Constants
 		DeleteGroup,
 		GetAllGroups,
 		GetGroupByID,
-		GetGroupByName
+		GetGroupByName,
+		GetAllGroupsByTeacher
 	}
 }
 
