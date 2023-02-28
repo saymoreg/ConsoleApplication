@@ -17,7 +17,6 @@ namespace Data
 					Id = ++id,
 					Username = "admin",
 					Password = PasswordHasher.Encrypt("12345"),
-					CreatedBy = "System"
 				},
 
 				new Admin
@@ -25,7 +24,6 @@ namespace Data
 					Id = ++id,
 					Username = "moderator",
 					Password = PasswordHasher.Encrypt("moderator123"),
-					CreatedBy = "System"
 				}
 			};
 
